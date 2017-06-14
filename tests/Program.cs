@@ -1,8 +1,15 @@
-﻿using System;
+using System;
+using System.Threading.Tasks;
 
-namespace TestHost
+using Orleans;
+using Orleans.Runtime.Configuration;
+
+namespace TestSiloHost
 {
-    class Program
+    /// <summary>
+    /// Orleans test silo host
+    /// </summary>
+    public class Program
     {
         static void Main(string[] args)
         {
@@ -15,6 +22,12 @@ namespace TestHost
                 AppDomainInitializerArguments = args,
             });
 
+            var clientConfig = ClientConfiguration.LoadFromFile("OrleansClient.config");
+            GrainClient.Initialize(clientConfig);
+
+            // TODO: once the previous call returns, the silo is up and running.
+            //       This is the place your custom logic, for example calling client logic
+            //       or initializing an HTTP front end for accepting incoming requests.
 
             Console.WriteLine("Orleans Silo is running.\nPress Enter to terminate...");
             Console.ReadLine();
@@ -24,7 +37,7 @@ namespace TestHost
 
         static void InitSilo(string[] args)
         {
-            hostWrapper = new OrleansHostWrapper();
+            hostWrapper = new OrleansHostWrapper(args);
 
             if (!hostWrapper.Run())
             {
@@ -41,6 +54,6 @@ namespace TestHost
             }
         }
 
-        static OrleansHostWrapper hostWrapper;
+        private static OrleansHostWrapper hostWrapper;
     }
 }

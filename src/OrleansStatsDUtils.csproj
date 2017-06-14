@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net461</TargetFramework>
+    <GeneratePackageOnBuild>True</GeneratePackageOnBuild>
+    <AssemblyName>SBTech.OrleansStatsDUtils</AssemblyName>
+    <RootNamespace>SBTech.OrleansStatsDUtils</RootNamespace>
+    <Version>1.4.2</Version>
+    <Authors>AntyaDev</Authors>
+    <Description>Orleans statistics provider for StatsD</Description>
+    <Company>SBTech</Company>
+    <Product>OrleansStatsDUtils</Product>
+    <Copyright>SBTech Copyright © 2016</Copyright>
+    <PackageProjectUrl>https://github.com/OrleansContrib/OrleansStatsDUtils</PackageProjectUrl>
+    <PackageLicenseUrl>https://github.com/OrleansContrib/OrleansStatsDUtils/blob/master/LICENSE</PackageLicenseUrl>
+    <PackageIconUrl>https://avatars3.githubusercontent.com/u/17160784?v=3&amp;amp;s=200</PackageIconUrl>
+    <PackageTags>Orleans StatsD Actor-Model Actors</PackageTags>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Orleans.Core" Version="1.4.2" />
+    <PackageReference Include="StatsdClient" Version="3.0.86" />
+  </ItemGroup>
+
+</Project>
